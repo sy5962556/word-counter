@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>word counter</title>
+    <style>
+        .home{
+            background-image: url(bg.jpg);
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 22px;
+            text-align: center;
+        }
+       
+        h2{
+            /* background-color: rgb(140, 66, 189); */
+            width: 80vh;
+            height: 53px;
+            margin-left: 30vw;
+            font-size: 30px;
+
+        }
+        p{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 25px;
+        }
+        h1{
+            /* background-color: rgb(140, 66, 189); */
+            width: 95vh;
+            height: 32px;
+            
+            color: rgb(45, 156, 121);
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        a img{
+            margin-right: 20svw;
+            height: 70px;
+            width: 75px;
+                    }
+        #textarea {
+            width: 110vh;
+            height: 55vh;
+            border-width: 8px;
+            border-color: rgb(175, 65, 190);
+            border-radius: 20px;
+            
+            background-image: url(text.jpg);
+            background-repeat: none;
+            background-size: 100% 100%; 
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        
+        }
+        .header{
+            display: flex;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="home" >
+        <div class="header">
+            <a href="index.html"><img src="images.jpg" alt=" Word Counter"></a>
+            <h1>Word and Character counter</h1>
+
+        </div>
+        <p>Enter your text to count the number of words and number charachters are used in given text. </p>
+        <div class="container">
+            <textarea  id="textarea" cols="30" rows="10" value="Enter your text here........."></textarea>
+        </div>
+        <h2>
+            <span id="word">0</span> words <span id="char">0</span> charachter
+        </h2>
+
+
+    </div>
+
+    <script>
+        // let word=document.getElementById("word");
+        let textbox=document.getElementById("textarea");
+        textbox.addEventListener('input',function(){
+
+            let text = this.value;
+            let char = 0;
+            
+            text = text.trim();
+            let words = text.split(" ");
+            console.log(words);
+            let clean = words.filter(function(elm){
+                return elm != "";
+            });
+            let l=clean.length;
+            while(l--){
+                char+=clean[l].length;
+                char++;
+            }  
+
+            document.getElementById("char").innerHTML=char;
+            document.getElementById("word").innerHTML=clean.length;
+        });
+
+    </script>
+</body>
+</html>
